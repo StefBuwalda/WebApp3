@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar area  -->
+    <div id="navbar">
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+
+    <!-- General Grid  -->
+    <div id="page_content">
+        <div id="area1">
+            Health information
+        </div>
+
+        <!-- Game area-->
+        <div id="area2">
+            <div id="game_content">
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+</body>
+
+<script>
+    const grid = document.getElementById("game_content");
+
+    for (let i = 1; i <= 20; i++) {
+        const cell = document.createElement("div");
+        cell.className = "cell";
+        cell.textContent = i;
+        grid.appendChild(cell);
+    }
+</script>
+
+</html>
