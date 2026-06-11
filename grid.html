@@ -26,17 +26,69 @@
         </div>
 
         <!-- Game area-->
-        <div class="area2" id="gameBoard">
-            <div class="card-wrapper">
-                <div class="card">
-                    <div class="card-front">Front</div>
-                    <div class="card-back">Back</div>
+        <div id="gameWrapper">
+            <div id="gameBoard">
+                <div class="card-wrapper">
+                    <div class="card">
+                        <div class="card-front">Front</div>
+                        <div class="card-back">Back</div>
+                    </div>
                 </div>
             </div>
-    </div>
+        </div>
+
 
 
 
 </body>
+
+<script>
+    /**
+ * Populates #gameBoard with an N (columns) x M (rows) grid of cards.
+ * @param {number} cols - Number of columns (N)
+ * @param {number} rows - Number of rows (M)
+ */
+    function generateCards(cols, rows) {
+        const gameBoard = document.getElementById('gameBoard');
+        if (!gameBoard) {
+            console.error('Element #gameBoard not found.');
+            return;
+        }
+
+        // Clear existing cards
+        gameBoard.innerHTML = '';
+
+        // Set CSS grid layout on the board
+        gameBoard.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+
+        const total = cols * rows;
+
+        for (let i = 0; i < total; i++) {
+            const cardNumber = i + 1;
+
+            const wrapper = document.createElement('div');
+            wrapper.classList.add('card-wrapper');
+
+            const card = document.createElement('div');
+            card.classList.add('card');
+
+            const front = document.createElement('div');
+            front.classList.add('card-front');
+            front.textContent = `Front ${cardNumber}`;
+
+            const back = document.createElement('div');
+            back.classList.add('card-back');
+            back.textContent = `Back ${cardNumber}`;
+
+            card.appendChild(front);
+            card.appendChild(back);
+            wrapper.appendChild(card);
+            gameBoard.appendChild(wrapper);
+        }
+    }
+
+    // Example: 4 columns × 3 rows
+    generateCards(6, 6);
+</script>
 
 </html>
