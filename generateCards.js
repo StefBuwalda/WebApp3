@@ -100,6 +100,8 @@ async function generateCards(cols, rows) {
     imageUrls.forEach((url) => {
         const wrapper = document.createElement('div');
         wrapper.classList.add('card-wrapper');
+        wrapper.dataset.value = url;        // ← add this
+        wrapper.addEventListener('click', () => handleCardClick(wrapper))
 
         const card = document.createElement('div');
         card.classList.add('card');
