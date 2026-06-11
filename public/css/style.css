@@ -5,25 +5,6 @@
     box-sizing: border-box;
 }
 
-/* Navbar Stuff */
-#navbar {
-    display: flex;
-    justify-content: space-between;
-    /* space between logo and links */
-    align-items: center;
-    background-color: #333;
-    padding: 10px 20px;
-    height: calc(1rem + 20px);
-}
-
-/* Links inside navbar */
-#navbar a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 16px;
-}
-
 /* Grid takes remaining space */
 #page_content {
     height: calc(100vh - 1rem - 20px);

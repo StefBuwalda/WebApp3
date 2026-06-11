@@ -1,4 +1,3 @@
-
 /**
  * Populates #gameBoard with an N x M grid of memory-card pairs.
  * Each unique image appears on exactly two cards.
