@@ -20,6 +20,7 @@
 <script>
     <?php
         include __DIR__ . "/../js/generateCards.js.php";
+        include __DIR__ . "/../js/gameLogic.js";
     ?>
 </script>
 
