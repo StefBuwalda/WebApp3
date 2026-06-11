@@ -1,0 +1,71 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar Stuff */
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    /* space between logo and links */
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    height: calc(1rem + 20px);
+}
+
+/* Links inside navbar */
+#navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+/* Grid takes remaining space */
+#page_content {
+    height: calc(100vh - 1rem - 20px);
+    margin-bottom: 20px;
+    width: 100vw;
+
+    display: grid;
+    grid-template-columns: 0fr 8fr 0fr;
+    grid-template-rows: 40px auto 0px;
+
+    gap: 10px;
+    padding: 10px;
+    background-color: #f2f2f2;
+}
+
+/* Grid items */
+#page_content>div {
+    background: rgba(0, 0, 255, 0.1);
+    border: 2px dashed blue;
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 12px;
+}
+
+/* Game inside of page */
+#page_content>#area2 {
+    grid-area: 2 / 2 / 3 / 3;
+
+    aspect-ratio: 1 / 1;
+
+    justify-self: center;
+    align-self: center;
+
+    width: 100%;
+    max-width: min(100%, 100vh - 1rem - 100px);
+}
+
+#page_content>#area1 {
+    grid-area: 1 / 2 / 2 / 3;
+    height: 100%;
+}
