@@ -9,12 +9,6 @@
         <!-- Game area-->
         <div id="gameWrapper">
             <div id="gameBoard">
-                <div class="card-wrapper">
-                    <div class="card">
-                        <div class="card-front">Front</div>
-                        <div class="card-back">Back</div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

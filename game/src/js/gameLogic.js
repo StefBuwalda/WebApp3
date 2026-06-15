@@ -1,9 +1,6 @@
 let flippedCard = []
 let lockBoard = false;
 
-wrapper = document.createElement('div');
-wrapper.classList.add('card-wrapper');
-
 function handleCardClick(wrapper) {
     if (lockBoard) return;
     if (wrapper.classList.contains('flipped')) return;
