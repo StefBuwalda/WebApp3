@@ -2,7 +2,8 @@
 <div id="page_wrapper">
     <div id="page_content">
         <div id="area1">
-            Health information
+            <div id="healthBar">
+            </div>
         </div>
 
         <!-- Game area-->

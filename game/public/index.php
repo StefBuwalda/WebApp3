@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/card.css">
+    <link rel="stylesheet" href="css/healthbar.css">
 </head>
 
 <body>
