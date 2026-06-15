@@ -5,17 +5,25 @@
     box-sizing: border-box;
 }
 
+#page_wrapper {
+    display:flex;
+    height: calc(100vh - 1rem - 20px);
+    background-color: #87CFCC;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Grid takes remaining space */
 #page_content {
-    height: calc(100vh - 1rem - 20px);
-    width: 100vw;
+    width: 100%;
 
     display: grid;
-    grid-template-columns: 0fr 8fr 0fr;
-    grid-template-rows: 40px auto 0px;
-
+    grid-template-columns:
+        1fr
+        min(100%, calc(100vh - 1rem - 100px))
+        1fr;
+    grid-template-rows: 40px min(100%, calc(100vh - 1rem - 100px)) 0px;
     padding: 10px;
-    background-color: #87CFCC;
 }
 
 /* Grid items */
@@ -35,6 +43,7 @@
 
 /* Game inside of page */
 #gameWrapper {
+    /* grid-area: row-start / column-start / row-end / column-end */
     grid-area: 2 / 2 / 3 / 3;
 
     aspect-ratio: 1 / 1;
@@ -43,7 +52,7 @@
     align-self: center;
 
     width: 100%;
-    max-width: min(100%, 100vh - 1rem - 100px);
+    /*max-width: min(100%, 100vh - 1rem - 100px);*/
 }
 
 #gameBoard {
@@ -53,54 +62,11 @@
 }
 
 #page_content>#area1 {
+    /* grid-area: row-start / column-start / row-end / column-end */
     grid-area: 1 / 2 / 2 / 3;
     height: 100%;
+    width: 100%;
     border-radius: 80px;
-}
-
-.card-wrapper {
-    width: 100%;
-    cursor: pointer;
-    padding: 14px;
-}
-
-.card {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.6s ease;
-}
-
-.card-wrapper.flipped .card {
-    transform: rotateY(180deg);
-}
-
-.card-front,
-.card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-}
-
-.card-front {
-    background-color: #E2A3C7;
-    color: white;
-}
-
-.card-back {
-    background-color: #A8DCD9;
-    color: white;
-    transform: rotateY(180deg);
-}
-
-.card-front img{
-    height: 70%;
-    width: 70%;
-    object-fit: contain;
+    justify-self: center;
+    align-self: end;
 }
