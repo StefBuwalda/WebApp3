@@ -15,14 +15,14 @@
     grid-template-rows: 40px auto 0px;
 
     padding: 10px;
-    background-color: #f2f2f2;
+    background-color: #87CFCC;
 }
 
 /* Grid items */
 #page_content>div {
-    /*background: rgba(0, 0, 255, 0.1);*/
-    border: 2px dashed blue;
-    border-radius: 8px;
+    background: #60435F;
+    border-radius: 20px;
+    box-shadow: #333333 0px 4px 8px;
 
     display: flex;
     justify-content: center;
@@ -55,12 +55,13 @@
 #page_content>#area1 {
     grid-area: 1 / 2 / 2 / 3;
     height: 100%;
+    border-radius: 80px;
 }
 
 .card-wrapper {
     width: 100%;
     cursor: pointer;
-    padding: 1px;
+    padding: 14px;
 }
 
 .card {
@@ -88,12 +89,12 @@
 }
 
 .card-front {
-    background-color: blue;
+    background-color: #E2A3C7;
     color: white;
 }
 
 .card-back {
-    background-color: lightgreen;
-    color: black;
+    background-color: #A8DCD9;
+    color: white;
     transform: rotateY(180deg);
 }
