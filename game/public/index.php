@@ -7,6 +7,7 @@
     <title>Example page</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/card.css">
 </head>
 
 <body>
