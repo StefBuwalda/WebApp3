@@ -15,7 +15,7 @@
 </div>
 
 
-<script>
+<script type="module">
     <?php
         include __DIR__ . "/../js/generateCards.js.php";
         include __DIR__ . "/../js/gameLogic.js";

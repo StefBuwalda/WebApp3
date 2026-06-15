@@ -7,6 +7,7 @@ function handleCardClick(wrapper) {
 
     wrapper.classList.add('flipped');
     flippedCard.push(wrapper);
+    
     if (flippedCard.length === 2) {
         lockBoard = true;
 

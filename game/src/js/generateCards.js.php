@@ -6,7 +6,10 @@
  *
  * @param {number} cols - Number of columns (N)
  * @param {number} rows - Number of rows (M)
- */
+ */ import {Game} from "/js/gameClasses/game.js";
+
+let game = new Game();
+
 async function generateCards(cols, rows) {
     const gameBoard = document.getElementById('gameBoard');
     const gameWrapper = document.getElementById('gameWrapper');
@@ -100,7 +103,7 @@ async function generateCards(cols, rows) {
         const wrapper = document.createElement('div');
         wrapper.classList.add('card-wrapper');
         wrapper.dataset.value = url;        // ← add this
-        wrapper.addEventListener('click', () => handleCardClick(wrapper))
+        wrapper.addEventListener('click', () => game.flipCard(wrapper))
 
         const card = document.createElement('div');
         card.classList.add('card');
