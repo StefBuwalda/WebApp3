@@ -1,49 +1,29 @@
-const gameState = {
-    flippedCards: [],
-    lockBoard: false,
-    moves: 0,
-    matchesFound: 0,
-    totalPairs: 0,
-    isComplete: false
-}
+let flippedCard = []
+let lockBoard = false;
 
-function resetGame(totalPairs) {
-    gameState.flippedCards = [];
-    gameState.lockBoard = false;
-    gameState.moves = 0;
-    gameState.matchesFound = 0;
-    gameState.totalPairs = totalPairs;
-    gameState.isComplete = false;
-}
+wrapper = document.createElement('div');
+wrapper.classList.add('card-wrapper');
 
 function handleCardClick(wrapper) {
-    if (gameState.lockBoard) return;
+    if (lockBoard) return;
     if (wrapper.classList.contains('flipped')) return;
 
     wrapper.classList.add('flipped');
-    gameState.flippedCards.push(wrapper);
-    gameState.moves++;
+    flippedCard.push(wrapper);
+    if (flippedCard.length === 2) {
+        lockBoard = true;
 
-    if (gameState.flippedCards.length === 2) {
-        gameState.lockBoard = true;
-
-        const [first, second] = gameState.flippedCards;
+        const [first, second] = flippedCard;
 
         if (first.dataset.value === second.dataset.value) {
-            gameState.matchesFound++;
-            gameState.flippedCards = [];
-            gameState.lockBoard = false;
-
-            if (gameState.matchesFound === gameState.totalPairs) {
-                gameState.isComplete = true;
-                console.log(`Game complete in ${gameState.moves} moves!`);
-            }
+            flippedCard = [];
+            lockBoard = false;
         } else {
             setTimeout(() => {
                 first.classList.remove('flipped');
                 second.classList.remove('flipped');
-                gameState.flippedCards = [];
-                gameState.lockBoard = false;
+                flippedCard = [];
+                lockBoard = false;
             }, 1000);
         }
     }

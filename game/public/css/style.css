@@ -8,7 +8,7 @@
 #page_wrapper {
     display:flex;
     height: calc(100vh - 1rem - 20px);
-    background-color: #87CFCC;
+    background: linear-gradient(135deg, #F7BEDD, #C0D3DB, #87CFCC);
     justify-content: center;
     align-items: center;
 }
