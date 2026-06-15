@@ -107,8 +107,6 @@ async function generateCards(cols, rows) {
 
         const front = document.createElement('div');
         front.classList.add('card-front');
-        front.textContent = '?';
-
 
         const img = document.createElement('img');
         img.src = url;
@@ -120,6 +118,14 @@ async function generateCards(cols, rows) {
         back.classList.add('card-back');
         back.appendChild(img);
 
+
+        const backImg = document.createElement('img');
+        backImg.src= 'Paw_Print.svg';
+        backImg.alt = 'card front'
+
+
+
+        front.appendChild(backImg);
         card.appendChild(front);
         card.appendChild(back);
         wrapper.appendChild(card);
