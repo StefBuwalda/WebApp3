@@ -107,17 +107,18 @@ async function generateCards(cols, rows) {
 
         const front = document.createElement('div');
         front.classList.add('card-front');
+        front.textContent = '?';
+
 
         const img = document.createElement('img');
         img.src = url;
         img.alt = 'cat';
         img.style.cssText = 'width:100%; height:100%; object-fit:cover; display:block;';
-        front.appendChild(img);
         imgElements.push(img);
 
         const back = document.createElement('div');
         back.classList.add('card-back');
-        back.textContent = '?';
+        back.appendChild(img);
 
         card.appendChild(front);
         card.appendChild(back);
