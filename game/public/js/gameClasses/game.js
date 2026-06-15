@@ -1,5 +1,7 @@
 export class Game {
-    constructor() {
+    constructor(columns) {
+        this.cols = columns;
+        this.cards = 16;
         this.flippedCards = [];
         this.locked = false;
     }

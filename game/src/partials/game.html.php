@@ -7,18 +7,19 @@
         </div>
 
         <!-- Game area-->
-        <div id="gameWrapper">
-            <div id="gameBoard">
-            </div>
+        <div id="gameBoard">
         </div>
     </div>
 </div>
 
 
 <script type="module">
-    <?php
-        include __DIR__ . "/../js/generateCards.js.php";
-        include __DIR__ . "/../js/gameLogic.js";
-    ?>
+    import { Game } from '/js/gameClasses/game.js';
+    import { GameRenderer } from '/js/gameClasses/gameRenderer.js';
+
+    const game = new Game(4);
+    const renderer = new GameRenderer(game);
+
+    await renderer.setUpBoard();
 </script>
 
