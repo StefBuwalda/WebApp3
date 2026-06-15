@@ -3,7 +3,6 @@ let lockBoard = false;
 
 wrapper = document.createElement('div');
 wrapper.classList.add('card-wrapper');
-wrapper.dataset.value = url;
 
 function handleCardClick(wrapper) {
     if (lockBoard) return;
