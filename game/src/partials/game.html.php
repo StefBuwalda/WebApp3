@@ -12,6 +12,7 @@
     </div>
 </div>
 
+<?php include __DIR__ . '/card.html'; ?>
 
 <script type="module">
     import { Game } from '/js/gameClasses/game.js';

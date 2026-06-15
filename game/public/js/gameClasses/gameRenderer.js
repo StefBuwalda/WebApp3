@@ -31,39 +31,7 @@ export class GameRenderer {
         const imgElements = [];
 
         imageUrls.forEach((url) => {
-            const wrapper = document.createElement('div');
-            wrapper.classList.add('card-wrapper');
-            wrapper.dataset.value = url;        // ← add this
-            wrapper.addEventListener('click', () => this.game.flipCard(wrapper))
-
-            const card = document.createElement('div');
-            card.classList.add('card');
-
-            const front = document.createElement('div');
-            front.classList.add('card-front');
-
-            const img = document.createElement('img');
-            img.src = url;
-            img.alt = 'cat';
-            img.style.cssText = 'width:100%; height:100%; object-fit:cover; display:block;';
-            imgElements.push(img);
-
-            const back = document.createElement('div');
-            back.classList.add('card-back');
-            back.appendChild(img);
-
-
-            const backImg = document.createElement('img');
-            backImg.src= 'Paw_Print.svg';
-            backImg.alt = 'card front'
-
-
-
-            front.appendChild(backImg);
-            card.appendChild(front);
-            card.appendChild(back);
-            wrapper.appendChild(card);
-            gameBoard.appendChild(wrapper);
+            gameBoard.appendChild(this.createCard(url, imgElements));
         });
 
         // --- Wait for all images to load ---
@@ -79,6 +47,23 @@ export class GameRenderer {
                 img.onerror = resolve; // don't hang on a failed load
             })
         ));
+    }
+
+    createCard(url, imgElements) {
+        const template = document.getElementById('card-template');
+        if (!template) {
+            throw new Error('Missing #card-template in the DOM');
+        }
+
+        const wrapper = template.content.firstElementChild.cloneNode(true);
+        wrapper.dataset.value = url;
+        wrapper.addEventListener('click', () => this.game.flipCard(wrapper));
+
+        const backImg = wrapper.querySelector('.card-back img');
+        backImg.src = url;
+        imgElements.push(backImg);
+
+        return wrapper;
     }
 
 }
