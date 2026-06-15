@@ -12,9 +12,19 @@ export class GameRenderer {
 
         const pairs = this.game.cards / 2;
         const imageUrls = [];
+        const usedIds = new Set();
 
         for (let i = 0; i < pairs; i++) {
-            const url = `https://cataas.com/cat?${i}`;
+            let cat;
+
+            do {
+                const response = await fetch('https://cataas.com/cat?json=true');
+                cat = await response.json();
+            } while (usedIds.has(cat.id));
+
+            usedIds.add(cat.id);
+
+            const url = `https://cataas.com/cat/${cat.id}`;
             imageUrls.push(url, url);
         }
 
