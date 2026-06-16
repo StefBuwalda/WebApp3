@@ -20,7 +20,7 @@
     display: grid;
     grid-template-columns:
         1fr
-        min(100%, calc(100vh - 5rem - 60px))
+        calc(min(100% - 2rem, 100vh - 5rem - 60px))
         1fr;
     grid-template-rows: 40px auto 0px;
     padding: 1rem;
