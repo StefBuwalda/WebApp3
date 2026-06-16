@@ -22,10 +22,17 @@ export class GameRenderer {
 
         // Get cards and set URLs
         var cards = this.game.cards
-        for (const i in cards) {
-            var element = this.createCard(catIds.at(i >> 1))
-            cards[i].setElement(element);
-            gameBoard.appendChild(element);
+        for (const card of cards) {
+            var element = this.createCard(catIds.at(card.id >> 1))
+            card.setElement(element);
+        }
+
+        // Add cards in random order
+        const renderOrder = [...cards];
+        this.shuffle(renderOrder);
+        this.shuffle(renderOrder);
+        for (const card of renderOrder){
+            gameBoard.appendChild(card.element);
         }
     }
 

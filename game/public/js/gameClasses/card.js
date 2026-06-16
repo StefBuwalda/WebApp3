@@ -22,8 +22,6 @@ export class Card {
 
     checkMatch(other) {
         // Divide by 2 which equals to pairId and check, bitshift is more efficient.
-        console.log(this.id, other.id)
-        console.log(this.id >> 1, other.id >> 1);
         return (this.id >> 1) === (other.id >> 1);
     }
 
