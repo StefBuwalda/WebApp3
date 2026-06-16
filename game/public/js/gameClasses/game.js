@@ -5,6 +5,7 @@ export class Game {
         this.cards = cards;
         this.flippedCards = [];
         this.locked = false;
+        this.health = 100;
     }
 
     flipCard(card){
@@ -22,19 +23,23 @@ export class Game {
             this.locked = true; // Lock the game
 
             const [first, second] = this.flippedCards; // Get both cards
-
             if (first.checkMatch(second)) {
+                this.health += 40;
                 first.match();
                 second.match();
             } else {
+                this.health -= 20;
                 setTimeout(() => {
                     first.flip();
                     second.flip();
                 }, 1000);
             }
+            var bar = document.getElementById("healthBar");
+            bar.style.width = `${this.health}%`;
             this.flippedCards = [];
             this.locked = false;
         }
+
     }
 
     generateCards(amount){
