@@ -1,37 +1,47 @@
+import { Card } from "/js/gameClasses/card.js";
 export class Game {
-    constructor(columns) {
+    constructor(columns, cards = []) {
         this.cols = columns;
-        this.cards = 16;
+        this.cards = cards;
         this.flippedCards = [];
         this.locked = false;
     }
 
     flipCard(card){
-        if (this.locked){
+        // Check if locked or already flipped
+        if (this.locked || card.flipped){
             return;
         }
-        if (card.classList.contains('flipped')) return;
 
-        card.classList.add('flipped');
+        // Flip card and add to list
+        card.flip();
         this.flippedCards.push(card);
 
+        // Check flipped pair
         if (this.flippedCards.length === 2) {
-            this.locked = true;
+            this.locked = true; // Lock the game
 
-            const [first, second] = this.flippedCards;
+            const [first, second] = this.flippedCards; // Get both cards
 
-            if (first.dataset.value === second.dataset.value) {
-                this.flippedCards = [];
-                this.locked = false;
+            if (first.checkMatch(second)) {
+                first.match();
+                second.match();
             } else {
                 setTimeout(() => {
-                    first.classList.remove('flipped');
-                    second.classList.remove('flipped');
-                    this.flippedCards = [];
-                    this.locked = false;
+                    first.flip();
+                    second.flip();
                 }, 1000);
             }
+            this.flippedCards = [];
+            this.locked = false;
         }
     }
 
+    generateCards(amount){
+        let start = this.cards.length;
+
+        for (let i = 0; i < amount; i++) {
+            this.cards.push(new Card(start + i));
+        }
+    }
 }

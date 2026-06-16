@@ -18,9 +18,10 @@
     import { Game } from '/js/gameClasses/game.js';
     import { GameRenderer } from '/js/gameClasses/gameRenderer.js';
 
-    const game = new Game(4);
-    const renderer = new GameRenderer(game);
+    window.game = new Game(4);
+    window.game.generateCards(16);
 
-    await renderer.setUpBoard();
+    window.renderer = new GameRenderer(window.game);
+    await window.renderer.setUpBoard();
 </script>
 
