@@ -36,6 +36,11 @@ export class GameRenderer {
         }
     }
 
+    updateVisual(){
+        var bar = document.getElementById("healthBar");
+        bar.style.width = `${this.game.health}%`;
+    }
+
     async getUniqueCats(n){
         var uniqueCats = new Set();
         for (let i = 0; i < n; i++) {

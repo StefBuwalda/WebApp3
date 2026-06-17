@@ -4,8 +4,20 @@ export class Game {
         this.cols = columns;
         this.cards = cards;
         this.flippedCards = [];
-        this.locked = false;
+        this.locked = true;
         this.health = 100;
+        this.pairs = 0;
+    }
+
+    setOnPairFound(callable){
+        this.onPairFound = callable;
+    }
+    setOnAllPairsFound(callable){
+        this.onAllPairsFound = callable;
+    }
+
+    setOnDeath(callable){
+        this.onDeath = callable;
     }
 
     flipCard(card){
@@ -24,22 +36,30 @@ export class Game {
 
             const [first, second] = this.flippedCards; // Get both cards
             if (first.checkMatch(second)) {
-                this.health += 40;
+                // Pair found
+                this.pairs++;
                 first.match();
                 second.match();
+                if (this.onPairFound) this.onPairFound();
+                this.flippedCards = [];
+                this.locked = false;
             } else {
-                this.health -= 20;
                 setTimeout(() => {
                     first.flip();
                     second.flip();
+
+                    this.flippedCards = [];
+                    this.locked = false;
                 }, 1000);
             }
-            var bar = document.getElementById("healthBar");
-            bar.style.width = `${this.health}%`;
-            this.flippedCards = [];
-            this.locked = false;
         }
+    }
 
+    checkForEnd(){
+        console.log("Checking for full board");
+        if (this.cards.length >> 1 === this.pairs){
+            this.onAllPairsFound();
+        }
     }
 
     generateCards(amount){
@@ -48,5 +68,19 @@ export class Game {
         for (let i = 0; i < amount; i++) {
             this.cards.push(new Card(start + i));
         }
+    }
+
+    reset(){
+        this.locked = true;
+        this.health = 100;
+        this.pairs = 0;
+        for (const card of this.cards) {
+            if (card.flipped){
+                card.flip();
+            }
+        }
+        setTimeout(()=> {
+            this.locked = false;
+        }, 1000);
     }
 }

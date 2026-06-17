@@ -1,0 +1,42 @@
+*{
+    font-family: "Bradley Hand ITC", cursive;
+    color: white;
+    letter-spacing: 3px;
+}
+
+.welcome_content{
+    padding:40px;
+    justify-items: center;
+    align-content: center;
+}
+
+.welcome_content h1{
+    font-size: 40px;
+}
+
+.choice-area{
+    justify-content: space-around;
+
+}
+
+.background{
+    background-color: #87CFCC;
+}
+
+input[type="password"], input[type="text"]{
+    color: black
+}
+
+
+.button{
+    background-color: #E2A3C7;
+    padding: 1rem;
+    font-size: 40px;
+    margin: 1rem;
+    border-radius: 30px;
+}
+
+.button.click{
+    background-color: #E2A3C7;
+}
+
