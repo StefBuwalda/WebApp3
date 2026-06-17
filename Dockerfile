@@ -1,4 +1,9 @@
 FROM php:8.2-cli
+
 COPY ./game ./game
-CMD ["php", "-S", "0.0.0.0:80", "-t", "game/public"]
+
+RUN mv /game/.env.example /game/.env
+
 EXPOSE 80
+
+CMD ["php", "-S", "0.0.0.0:80", "-t", "game/public"]
