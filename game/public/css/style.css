@@ -5,6 +5,16 @@
     box-sizing: border-box;
 }
 
+.no-drag {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.no-drag img {
+    -webkit-user-drag: none;
+}
+
 #page_wrapper {
     display:flex;
     height: calc(100vh - 1rem - 20px);
