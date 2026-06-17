@@ -15,13 +15,9 @@
 <?php include __DIR__ . '/card.html'; ?>
 
 <script type="module">
-    import { Game } from '/js/gameClasses/game.js';
-    import { GameRenderer } from '/js/gameClasses/gameRenderer.js';
-
-    window.game = new Game(4);
-    window.game.generateCards(16);
-
-    window.renderer = new GameRenderer(window.game);
-    await window.renderer.setUpBoard();
+    import { EndlessController } from '/js/gameControllers/EndlessController.js';
+    window.controller = new EndlessController();
+    window.controller.setup();
+    window.controller.start();
 </script>
 
