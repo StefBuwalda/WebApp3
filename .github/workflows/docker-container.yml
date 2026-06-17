@@ -30,6 +30,5 @@ jobs:
           context: .
           push: true
           tags: |
-            tags: |
-              ghcr.io/stefbuwalda/webapp3:${{ github.sha }}
-              ghcr.io/stefbuwalda/webapp3:latest
+            ghcr.io/stefbuwalda/webapp3:${{ github.sha }}
+            ghcr.io/stefbuwalda/webapp3:latest
