@@ -1,11 +1,13 @@
 #navbar {
     display: flex;
-    justify-content: space-between;
-    /* space between logo and links */
-    align-items: center;
-    background-color: #333;
+    font-family: "Bradley Hand ITC", cursive;
     padding: 10px 20px;
-    height: calc(1rem + 20px);
+    height: calc(2rem + 20px);
+}
+
+.nav-links{
+    justify-content: space-between;
+    align-items: center;
 }
 
 #navbar a {
@@ -13,4 +15,8 @@
     text-decoration: none;
     margin: 0 10px;
     font-size: 16px;
+}
+
+#logo{
+    height: calc(2rem + 20px);
 }
