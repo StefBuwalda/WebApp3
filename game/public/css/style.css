@@ -13,6 +13,8 @@
 
 .no-drag img {
     -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: none;
 }
 
 #page_wrapper {
