@@ -1,39 +1,47 @@
-<?php include __DIR__ . '/../partials/navbar.html.php';
-?>
+<?php include __DIR__ . '/../partials/navbar.html.php'; ?>
 
-<div class="background">
+<main class="background">
     <div class="welcome_content">
         <h1>Hello and Welcome</h1>
-        <h2> Had a rough day? Come play your favorite memory! </h2>
+        <p class="welcome-subtitle">Had a rough day? Come play your favorite memory!</p>
 
         <div class="choice-area">
-            <a href="" class="button" > Register </a>
+            <a href="/register" class="button">Register</a>
+
             <input type="checkbox" id="modal-toggle" class="modal-checkbox">
             <label for="modal-toggle" class="button-wrapper">
-                <a class="button" type="open-btn">Login</a>
-                </label>
+                <span class="button">Login</span>
+            </label>
 
             <div class="modal-overlay" id="myModal">
                 <label for="modal-toggle" class="outside-close-area"></label>
 
-                <div class="modal-content">
-                    <label for="modal-toggle" class="close-btn">X</label>
-                    <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
-                    <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
-                    <button class="button" onclick="login()" > Log in </button>
-                </div>
+                <form class="modal-content" onsubmit="event.preventDefault(); login();">
+                    <label for="modal-toggle" class="close-btn">&times;</label>
 
+                    <div class="form-group">
+                        <label for="uname"><b>Username</b></label>
+                        <input type="text" id="uname" placeholder="Enter Username" name="uname" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="psw"><b>Password</b></label>
+                        <input type="password" id="psw" placeholder="Enter Password" name="psw" required>
+                    </div>
+
+                    <button type="submit" class="button button-submit">Log in</button>
+                </form>
             </div>
         </div>
-            <br>
-            <img src="cats.png" alt="kitties in a row">
-        </div>
 
-</div>
-
+        <img src="cats.png" alt="kitties in a row">
+    </div>
+</main>
 <script>
+    const dialog = document.getElementById('login-dialog');
+    document.getElementById('open-modal-btn').addEventListener('click', () => dialog.showModal());
+    document.getElementById('close-modal-btn').addEventListener('click', () => dialog.close());
+
     const API_BASE = <?= json_encode($_ENV['API_BASE_URL']) ?>;
 
     async function login() {

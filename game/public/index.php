@@ -4,6 +4,7 @@ $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $pages = [
         '/'        => __DIR__ . '/../src/pages/game.php',
         '/login'   => __DIR__ . '/../src/pages/login.php',
+    '/register' => __DIR__ . '/../src/pages/register.php',
 ];
 
 $page = $pages[$path] ?? __DIR__ . '/../src/pages/game.php';

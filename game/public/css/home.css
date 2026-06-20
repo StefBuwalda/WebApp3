@@ -1,12 +1,16 @@
-*{
+body {
     font-family: "Bradley Hand ITC", cursive;
     color: white;
     letter-spacing: 3px;
-    font-size: 15px
+    font-size: 15px;
+    margin: 0;
 }
 
+.background {
+    background-color: #87CFCC;
+
+}
 .welcome_content{
-    padding:40px;
     justify-items: center;
     align-content: center;
 }
@@ -15,8 +19,21 @@
     font-size: 40px;
 }
 
+.register-content{
+    background-color: rgba(255, 255, 255, 0.33);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    gap:16px;
+}
+
 .choice-area{
+    display: flex;
     justify-content: space-between;
+    gap: 1rem;
     padding-top :2rem
 }
 
@@ -26,24 +43,50 @@ img{
     display:block;
 }
 
-.background{
-    background-color: #87CFCC;
+
+
+input[type="password"],
+input[type="text"],
+input[type="email"] {
+    font-family: "garamond","serif" ;
+    color: black;
+    width:100%;
+    background-color: #d4fbfa;
+    border: 1px solid #60435F;
+    border-radius: 10px;
+    padding: 10px 14px;
+    box-sizing: border-box;
 }
 
-input[type="password"], input[type="text"]{
-    color: black
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: black;
+    -webkit-box-shadow: 0 0 0px 1000px #d4fbfa inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.form-group{
+    width: 15rem;
+
 }
 
 .button{
     background-color: #E2A3C7;
-    width: 40px;
     padding: 1rem;
     margin:0.5rem;
+    border: none;
     border-radius: 30px;
+    box-shadow: #9f738d 2px 2px;
+}
+
+.button:hover {
+    background-color: #60435F;
+
 }
 
 .button-wrapper {
-    display: inline-block;
+    display: inline-flex;
     cursor: pointer;
 }
 
@@ -65,8 +108,8 @@ input[type="password"], input[type="text"]{
     display: none;
 }
 .modal-content {
-    background-color: #E2A3C7;
-    padding: 20px;
+    background-color: rgba(226, 163, 199, 0.88);
+    padding: 2rem;
     border-radius: 20px;
     position: relative;
     z-index:2;
