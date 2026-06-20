@@ -1,22 +1,37 @@
 #navbar {
     display: flex;
     font-family: "Bradley Hand ITC", cursive;
+    background-color: #87CFCC ;
     padding: 10px 20px;
     height: calc(2rem + 20px);
 }
 
-.nav-links{
-    justify-content: space-between;
-    align-items: center;
+
+.nav-left,
+#logo,
+.nav-right {
+    flex: 1;
 }
+
+.nav-left{
+    justify-content: flex-start;
+}
+
+.nav-left{
+    justify-content: flex-end;
+}
+
 
 #navbar a {
     color: white;
     text-decoration: none;
     margin: 0 10px;
     font-size: 16px;
+    white-space: nowrap;
 }
 
 #logo{
     height: calc(2rem + 20px);
+    display:block;
+    object-fit: contain;
 }
