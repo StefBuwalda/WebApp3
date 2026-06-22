@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Example page</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/card.css">
     <link rel="stylesheet" href="/css/healthbar.css">
     <link rel="stylesheet" href="/css/home.css"
+
 </head>
 
 <body>
@@ -16,8 +18,8 @@
 <?php
 include __DIR__ . '/../partials/navbar.html.php'; ?>
 
-<main class="background">
-    <div class="welcome_content">
+<div class="welcome_content">
+    <div id="loginGroup">
         <h1>Hello and Welcome</h1>
         <p class="welcome-subtitle">Had a rough day? Come play your favorite memory!</p>
 
@@ -49,10 +51,12 @@ include __DIR__ . '/../partials/navbar.html.php'; ?>
                 </form>
             </div>
         </div>
-
-        <img src="cats.png" alt="kitties in a row">
     </div>
-</main>
+
+
+    <img src="cats.png" id="loginCats" alt="kitties in a row">
+</div>
+
 <script src="/js/login.js.php">
 </script>
 
