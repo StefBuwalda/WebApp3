@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        if (localStorage.getItem('jwt')) {
+            window.location.href = '/';
+        }
+    </script>
+
+    <script src="/js/fetch.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
@@ -9,7 +17,7 @@
     <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/card.css">
     <link rel="stylesheet" href="/css/healthbar.css">
-    <link rel="stylesheet" href="/css/home.css"
+    <link rel="stylesheet" href="/css/home.css">
 
 </head>
 
@@ -34,20 +42,21 @@ include __DIR__ . '/../partials/navbar.html.php'; ?>
             <div class="modal-overlay" id="myModal">
                 <label for="modal-toggle" class="outside-close-area"></label>
 
-                <form class="modal-content" onsubmit="event.preventDefault(); login();">
-                    <label for="modal-toggle" class="close-btn">&times;</label>
+                <form class="modal-content" id="login-form"
+                ">
+                <label for="modal-toggle" class="close-btn">&times;</label>
 
-                    <div class="form-group">
-                        <label for="uname"><b>Username</b></label>
-                        <input type="text" id="uname" placeholder="Enter Username" name="uname" required>
-                    </div>
+                <div class="form-group">
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" id="uname" placeholder="Enter Username" name="uname" required>
+                </div>
 
-                    <div class="form-group">
-                        <label for="psw"><b>Password</b></label>
-                        <input type="password" id="psw" placeholder="Enter Password" name="psw" required>
-                    </div>
+                <div class="form-group">
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" id="psw" placeholder="Enter Password" name="psw" required>
+                </div>
 
-                    <button type="submit" class="button button-submit">Log in</button>
+                <button type="submit" id="login-btn" class="button button-submit">Log in</button>
                 </form>
             </div>
         </div>
@@ -57,7 +66,7 @@ include __DIR__ . '/../partials/navbar.html.php'; ?>
     <img src="cats.png" id="loginCats" alt="kitties in a row">
 </div>
 
-<script src="/js/login.js.php">
+<script type="module" src="/js/login.js.php">
 </script>
 
 </body>

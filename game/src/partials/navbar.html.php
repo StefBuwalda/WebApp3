@@ -8,6 +8,20 @@
     </div>
     <div class="nav-right">
         <a href="#">Contact</a>
-        <a href="/login">login</a>
+        <a href="/login" data-guest>login</a>
+        <a href="#" id="logout" data-auth>logout</a>
     </div>
 </nav>
+
+<script type="module">
+    import {Auth} from "/js/auth.js";
+
+    const auth = new Auth();
+    auth.applyVisibility();
+
+    document.getElementById("logout").addEventListener('click', async (e) => {
+        e.preventDefault();
+        auth.logout();
+        window.location.href = "/";
+    });
+</script>

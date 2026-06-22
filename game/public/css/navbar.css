@@ -27,7 +27,7 @@
 }
 
 
-#navbar a {
+#navbar a, #navbar button {
     color: white;
     text-decoration: none;
     margin: 0 10px;

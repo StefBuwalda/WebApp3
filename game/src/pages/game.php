@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="/js/fetch.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Example page</title>
     <link rel="stylesheet" href="/css/game.css">
+    <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/card.css">
     <link rel="stylesheet" href="/css/healthbar.css">
-    <link rel="stylesheet" href="/css/home.css"
-    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/home.css">
 </head>
 
 <body>
@@ -25,7 +26,7 @@ include __DIR__ . '/../partials/navbar.html.php'; ?>
 
             </div>
         </div>
-        
+
         <div id="gameBoard" class="page_tile">
 
         </div>
