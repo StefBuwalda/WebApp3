@@ -3,7 +3,9 @@
         <a href="/">Home</a>
         <a href="#">About</a>
     </div>
-    <img src="logo.png" alt="logo" id="logo">
+    <div class="nav-center">
+        <img src="logo.png" alt="logo" id="logo">
+    </div>
     <div class="nav-right">
         <a href="#">Contact</a>
         <a href="/login">login</a>
