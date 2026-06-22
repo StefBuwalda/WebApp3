@@ -1,4 +1,20 @@
-<?php include __DIR__ . '/../partials/navbar.html.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example page</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/card.css">
+    <link rel="stylesheet" href="/css/healthbar.css">
+    <link rel="stylesheet" href="/css/home.css"
+</head>
+
+<body>
+
+<?php
+include __DIR__ . '/../partials/navbar.html.php'; ?>
 
 <main class="background">
     <div class="welcome_content">
@@ -37,27 +53,10 @@
         <img src="cats.png" alt="kitties in a row">
     </div>
 </main>
-<script>
-    const dialog = document.getElementById('login-dialog');
-    document.getElementById('open-modal-btn').addEventListener('click', () => dialog.showModal());
-    document.getElementById('close-modal-btn').addEventListener('click', () => dialog.close());
-
-    const API_BASE = <?= json_encode($_ENV['API_BASE_URL']) ?>;
-
-    async function login() {
-        const response = await fetch(`${API_BASE}/memory/login`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username: 'Chantal', password: 'chantal' })
-        });
-
-        const data = await response.json();
-
-        if (data.token) {
-            localStorage.setItem('jwt', data.token);
-            alert('Login successful!\n\n' + JSON.stringify(data, null, 2));
-        } else {
-            alert('Login failed:\n\n' + JSON.stringify(data, null, 2));
-        }
-    }
+<script src="/js/login.js.php">
 </script>
+
+</body>
+
+
+</html>
