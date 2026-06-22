@@ -1,0 +1,23 @@
+body {
+    font-family: "Bradley Hand ITC", cursive;
+    color: white;
+    letter-spacing: 3px;
+    font-size: 15px;
+    margin: 0;
+    height: 100vh;
+    max-height: 100vh;
+    background-color: #87CFCC;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#page_wrapper {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    background: linear-gradient(135deg, #F7BEDD, #C0D3DB, #87CFCC);
+    justify-content: center;
+    align-items: center;
+    container-type: size;
+}
