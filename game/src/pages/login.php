@@ -43,6 +43,12 @@ include __DIR__ . '/../partials/header.php';
                     <div id="login-error" class="form-error"></div>
 
                     <button type="submit" id="login-btn" class="button button-submit">Log in</button>
+
+                    <button type="button" id="github-btn" class="button button-github">
+                        <img alt="ghimg" src="/github-icon.svg">
+                        Login with GitHub
+                    </button>
+
                     </form>
                 </div>
             </div>
@@ -52,6 +58,7 @@ include __DIR__ . '/../partials/header.php';
     </div>
 
     <script type="module" src="/js/login.js.php"></script>
+    <script type="module" src="/js/github.js.php"></script>
 
 <?php
 include __DIR__ . '/../partials/footer.php'; ?>

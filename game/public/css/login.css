@@ -20,3 +20,10 @@
 .form-error.visible {
     display: block;
 }
+
+.button.button-github {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
