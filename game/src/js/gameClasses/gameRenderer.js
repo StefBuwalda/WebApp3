@@ -3,9 +3,12 @@ import {config} from "/js/config.js.php";
 export class GameRenderer {
     constructor(game) {
         this.game = game;
+        this.preferences = null;
     }
 
     async setUpBoard() {
+        await this.loadPreferences();
+        this.applyPreferences();
         // Get board
         let gameBoard = document.getElementById('gameBoard');
         if (!gameBoard) {
@@ -35,6 +38,32 @@ export class GameRenderer {
         this.shuffle(renderOrder);
         for (const card of renderOrder) {
             gameBoard.appendChild(card.element);
+        }
+    }
+
+    async loadPreferences() {
+        try {
+            const response = await fetch(`${config.apiBaseUrl}/player/preferences`);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+            this.preferences = await response.json();
+        } catch (err) {
+            console.error('loadPreferences:', err);
+            this.preferences = {};
+        }
+    }
+
+    applyPreferences() {
+        const prefs = this.preferences;
+
+        const root = document.documentElement;
+
+        if (prefs.color_found) {
+            root.style.setProperty('--card-back-color', prefs.color_found);
+        }
+
+        if (prefs.color_closed) {
+            root.style.setProperty('--card-front-color', prefs.color_closed);
         }
     }
 
