@@ -4,6 +4,9 @@
     background-color: #87CFCC;
     padding: 10px 20px;
     height: calc(2rem + 20px);
+    position: sticky;
+    top: 0;
+    z-index: 10000;
 }
 
 .nav-left,

@@ -20,6 +20,26 @@ include __DIR__ . '/../partials/header.php';
         </div>
     </div>
 
+    <div id="gameOverScreen" class="hidden">
+        <div class="gameOverPanel">
+            <h1>Game Over</h1>
+
+            <div class="finalScore">
+                Score: <span id="finalScore">0</span>
+            </div>
+
+            <h2>Top 5 Players</h2>
+            <ol id="topPlayersList">
+                <!-- filled dynamically -->
+            </ol>
+
+            <div class="gameOverButtons">
+                <button id="uploadScoreBtn">Upload score</button>
+                <button id="playAgainBtn">Play again</button>
+            </div>
+        </div>
+    </div>
+
 <?php
 include __DIR__ . '/../partials/card.html'; ?>
 

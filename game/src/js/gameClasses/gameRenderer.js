@@ -36,9 +36,13 @@ export class GameRenderer {
         }
     }
 
-    updateVisual(score) {
+    hideGameOver() {
+        document.getElementById("gameOverScreen").classList.add("hidden");
+    }
+
+    updateVisual(health, score) {
         var bar = document.getElementById("healthBar");
-        bar.style.width = `${this.game.health}%`;
+        bar.style.width = `${health}%`;
 
         var scoreEl = document.getElementById("score");
         scoreEl.textContent = Math.round(score);
@@ -57,6 +61,21 @@ export class GameRenderer {
             uniqueCats.add(cat.id);
         }
         return [...uniqueCats];
+    }
+
+    showGameOver(score, topPlayers = []) {
+        document.getElementById("finalScore").textContent = score;
+
+        const list = document.getElementById("topPlayersList");
+        list.innerHTML = "";
+
+        topPlayers.slice(0, 5).forEach(p => {
+            const li = document.createElement("li");
+            li.textContent = `${p.name} - ${p.score}`;
+            list.appendChild(li);
+        });
+
+        document.getElementById("gameOverScreen").classList.remove("hidden");
     }
 
     createCard(catId) {
