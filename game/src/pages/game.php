@@ -8,6 +8,10 @@ include __DIR__ . '/../partials/header.php';
 
     <div id="body_remainder">
         <div id="page_grid">
+            <div id="scoreContainer" class="page_tile">
+                <span id="scoreLabel">Score:</span>
+                <span id="score">0</span>
+            </div>
             <div id="healthBarContainer" class="page_tile">
                 <div id="healthBar"></div>
             </div>

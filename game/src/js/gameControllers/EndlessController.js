@@ -12,17 +12,19 @@ export class EndlessController {
         this.renderer = renderer ?? new GameRenderer(this.game);
     }
 
-    async setup(){
+    async setup() {
         this.game.generateCards(16);
         this.game.setOnDeath(() => {
             this.stop();
-            console.log(this.score);});
+            console.log(this.score);
+        });
         this.game.setOnAllPairsFound(() => this.handleLevelCompleted())
         this.game.setOnPairFound(() => this.handlePairFound());
         await this.renderer.setUpBoard();
     }
 
     handlePairFound = () => {
+        this.score += 5;
         this.game.health += 20;
         if (this.game.health > 100) {
             this.game.health = 100;
@@ -30,7 +32,7 @@ export class EndlessController {
         this.game.checkForEnd();
     }
 
-    handleLevelCompleted(){
+    handleLevelCompleted() {
         this.score += this.scalingDifficulty * (this.game.health);
         this.scalingDifficulty++;
         console.log("Resetting level");
@@ -38,9 +40,9 @@ export class EndlessController {
         this.renderer.setUpBoard();
     }
 
-    passiveHealthLoss(){
+    passiveHealthLoss() {
         // If game is locked pause health loss.
-        if (this.game.locked){
+        if (this.game.locked) {
             this.lastTime = performance.now();
             return;
         }
@@ -58,8 +60,8 @@ export class EndlessController {
         }
     }
 
-    gameLoop(){
-        if (!this.running){
+    gameLoop() {
+        if (!this.running) {
             return;
         }
 
@@ -67,19 +69,19 @@ export class EndlessController {
         this.passiveHealthLoss();
 
         // Update continuous visuals
-        this.renderer.updateVisual();
+        this.renderer.updateVisual(this.score);
 
         // Create loop
         requestAnimationFrame(this.gameLoop.bind(this));
     }
 
-    start(){
+    start() {
         this.running = true;
         this.game.locked = false;
         this.gameLoop();
     }
 
-    stop(){
+    stop() {
         this.running = false;
         this.game.locked = true;
         this.lastTime = null;

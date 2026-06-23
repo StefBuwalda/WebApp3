@@ -5,9 +5,10 @@
 
 #page_grid {
     --gap: 1rem;
+    --barSize: 2rem;
 
     --center-size: min(100cqw - 2 * var(--gap),
-    calc(100cqh - 2rem - 2 * var(--gap)));
+    calc(100cqh - 2 * var(--barSize) - 3 * var(--gap)));
 
     width: 100%;
     height: 100%;
@@ -21,9 +22,9 @@
         1fr;
 
     grid-template-rows:
-        2rem
-        var(--center-size)
-        1fr;
+        var(--barSize)
+        var(--barSize)
+        var(--center-size);
 
 }
 
@@ -36,7 +37,7 @@
 }
 
 #healthBarContainer {
-    grid-area: 1 / 2 / 2 / 3;
+    grid-area: 2 / 2 / 3 / 3;
 
     height: 100%;
     width: 100%;
@@ -51,9 +52,17 @@
     font-size: 12px;
 }
 
+#scoreContainer {
+    grid-area: 1 / 2 / 2 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
 #gameBoard {
     /* grid-area: row-start / column-start / row-end / column-end */
-    grid-area: 2 / 2 / 3 / 3;
+    grid-area: 3 / 2 / 3 / 3;
     width: 100%;
     height: 100%;
     display: grid;
