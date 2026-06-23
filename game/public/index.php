@@ -15,6 +15,7 @@ $router = new Router();
 $router->add('/', __DIR__ . '/../src/pages/game.php');
 $router->add('/login', __DIR__ . '/../src/pages/login.php');
 $router->add('/register', __DIR__ . '/../src/pages/register.php');
+$router->add('/settings', __DIR__ . '/../src/pages/preferences.php');
 
 $router->serveDir('/js', __DIR__ . '/../src/js', 'application/javascript');
 

@@ -1,0 +1,15 @@
+label {
+    display: block;
+}
+
+.page_tile {
+    background: #60435F;
+    border-radius: 1rem;
+
+    box-shadow: #333333 0 4px 8px;
+    font-size: 12px;
+}
+
+.page_tile > * {
+    margin: 20px;
+}
