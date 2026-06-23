@@ -8,7 +8,7 @@ export class GameRenderer {
 
     async setUpBoard() {
         await this.loadPreferences();
-        this.applyPreferences();
+        this.applyColorPreferences();
         // Get board
         let gameBoard = document.getElementById('gameBoard');
         if (!gameBoard) {
@@ -23,12 +23,12 @@ export class GameRenderer {
         var pairs = this.game.cards.length >> 1;
 
         // Get N // 2 image URLs
-        var catIds = await this.getUniqueCats(pairs);
+        var imgs = await this.getUniqueImages(pairs);
 
         // Get cards and set URLs
         var cards = this.game.cards
         for (const card of cards) {
-            var element = this.createCard(catIds.at(card.id >> 1))
+            var element = this.createCard(imgs.at(card.id >> 1))
             card.setElement(element);
         }
 
@@ -53,7 +53,7 @@ export class GameRenderer {
         }
     }
 
-    applyPreferences() {
+    applyColorPreferences() {
         const prefs = this.preferences;
 
         const root = document.documentElement;
@@ -79,19 +79,49 @@ export class GameRenderer {
         scoreEl.textContent = Math.round(score);
     }
 
-    async getUniqueCats(n) {
-        var uniqueCats = new Set();
+    async getUniqueImages(n) {
+        const api = this.preferences?.preferred_api ?? 'cataas';
+        console.log();
+        const unique = new Set();
+        const results = [];
+
         for (let i = 0; i < n; i++) {
-            let cat;
+            let img;
 
             do {
-                const response = await fetch('https://cataas.com/cat?json=true');
-                cat = await response.json();
-            } while (uniqueCats.has(cat.id));
+                img = await this.fetchImage(api);
+            } while (unique.has(img.id));
 
-            uniqueCats.add(cat.id);
+            unique.add(img.id);
+            results.push(img);
         }
-        return [...uniqueCats];
+
+        return results;
+    }
+
+    async fetchImage(api) {
+        switch (api) {
+            case 'dog-ceo': {
+                const res = await fetch('https://dog.ceo/api/breeds/image/random');
+                const data = await res.json();
+
+                return {
+                    id: data.message,
+                    url: data.message
+                };
+            }
+
+            case 'cataas':
+            default: {
+                const res = await fetch('https://cataas.com/cat?json=true');
+                const data = await res.json();
+
+                return {
+                    id: data.id,
+                    url: data.url
+                };
+            }
+        }
     }
 
     async showGameOver(score) {
@@ -135,7 +165,7 @@ export class GameRenderer {
         });
     }
 
-    createCard(catId) {
+    createCard(img) {
         const template = document.getElementById('card-template');
         if (!template) {
             throw new Error('Missing #card-template in the DOM');
@@ -145,7 +175,7 @@ export class GameRenderer {
         wrapper.addEventListener('click', () => this.game.flipCard(wrapper.card));
 
         const backImg = wrapper.querySelector('.card-back img');
-        backImg.src = `https://cataas.com/cat/${catId}`;
+        backImg.src = `${img.url}`;
 
         return wrapper;
     }

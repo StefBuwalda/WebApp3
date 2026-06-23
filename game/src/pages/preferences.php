@@ -16,7 +16,6 @@ include __DIR__ . '/../partials/header.php';
             <select id="image-api" name="image_api">
                 <option value="cataas">Cataas (katten)</option>
                 <option value="dog-ceo">Dog CEO (honden)</option>
-                <option value="picsum">Lorem Picsum (willekeurig)</option>
             </select>
 
             <label for="color-found">Kleur gevonden kaartjes</label>

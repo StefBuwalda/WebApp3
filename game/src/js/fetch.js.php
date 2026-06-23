@@ -15,11 +15,15 @@
     window.fetch = async (url, options = {}) => {
         const token = localStorage.getItem('jwt');
 
+        const isInternalApi = url.startsWith(<?=json_encode(getenv('api_base_url'))?>);
+
         const response = await originalFetch(url, {
             ...options,
             headers: {
                 ...options.headers,
-                ...(token ? {Authorization: `Bearer ${token}`} : {}),
+                ...(token && isInternalApi
+                    ? {Authorization: `Bearer ${token}`}
+                    : {}),
             },
         });
 

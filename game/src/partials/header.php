@@ -25,7 +25,7 @@ $requireGuest = $requireGuest ?? false;
         <?php
         endif; ?>
 
-        <script src="/js/fetch.js"></script>
+        <script src="/js/fetch.js.php"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?= htmlspecialchars($title) ?></title>
