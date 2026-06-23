@@ -2,12 +2,24 @@
 
 require_once __DIR__ . '/../src/Router.php';
 
-// Load .env
+// 1. Define defaults
+$defaults = [
+    'API_BASE_URL' => 'http://127.0.0.1:8000',
+];
+
+// 2. Load .env
 $env = parse_ini_file(__DIR__ . '/../.env');
+
+// 3. Merge: env overrides defaults
+$config = $defaults;
+
 if ($env !== false) {
-    foreach ($env as $key => $value) {
-        putenv("$key=$value");
-    }
+    $config = array_merge($config, $env);
+}
+
+// 4. Apply to environment (only if not already set)
+foreach ($config as $key => $value) {
+    putenv("$key=$value");
 }
 
 $router = new Router();

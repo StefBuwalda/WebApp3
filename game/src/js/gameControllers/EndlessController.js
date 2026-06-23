@@ -38,13 +38,13 @@ export class EndlessController {
 
         console.log("Retrying pending score...");
 
-        await fetch(`${config.apiBaseUrl}/game/save`, {
+        fetch(`${config.apiBaseUrl}/game/save`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({score: data.score})
-        });
+        }).catch((err) => (console.log(err)));
     }
 
     restartGame() {
