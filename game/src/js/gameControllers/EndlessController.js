@@ -80,6 +80,11 @@ export class EndlessController {
         const score = this.score * -1;
 
         try {
+            localStorage.setItem("pendingScore", JSON.stringify({
+                score: score,
+                timestamp: Date.now()
+            }));
+
             const res = await fetch(`${config.apiBaseUrl}/game/save`, {
                 method: "POST",
                 headers: {
@@ -89,7 +94,7 @@ export class EndlessController {
             });
 
             if (res.status === 401) {
-                this.handleUnauthorized(score);
+                window.location.href = "/login";
                 return;
             }
 
@@ -97,21 +102,12 @@ export class EndlessController {
                 throw new Error("Upload failed");
             }
 
+            localStorage.removeItem("pendingScore");
+
             console.log("Score uploaded");
         } catch (err) {
             console.error(err);
         }
-    }
-
-    handleUnauthorized(score) {
-        localStorage.setItem("pendingScore", JSON.stringify({
-            score: score,
-            timestamp: Date.now()
-        }));
-
-        console.log("Score saved, redirecting to login");
-
-        window.location.href = "/login";
     }
 
     handlePairFound = () => {
