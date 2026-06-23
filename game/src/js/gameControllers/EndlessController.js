@@ -1,5 +1,6 @@
 import {Game} from "../gameClasses/game.js";
 import {GameRenderer} from "../gameClasses/gameRenderer.js";
+import {config} from "/js/config.js.php";
 
 export class EndlessController {
     constructor(game = new Game(4), renderer = null) {
@@ -24,6 +25,26 @@ export class EndlessController {
         this.game.setOnAllPairsFound(() => this.handleLevelCompleted())
         this.game.setOnPairFound(() => this.handlePairFound());
         await this.renderer.setUpBoard();
+        await this.retryPendingScore();
+    }
+
+    async retryPendingScore() {
+        const raw = localStorage.getItem("pendingScore");
+        if (!raw) return;
+
+        const data = JSON.parse(raw)
+
+        localStorage.removeItem("pendingScore");
+
+        console.log("Retrying pending score...");
+
+        await fetch(`${config.apiBaseUrl}/game/save`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({score: data.score})
+        });
     }
 
     restartGame() {
@@ -49,6 +70,48 @@ export class EndlessController {
         btn.onclick = () => {
             this.restartGame();
         };
+
+        document.getElementById("uploadScoreBtn").onclick = () => {
+            this.uploadScore();
+        };
+    }
+
+    async uploadScore() {
+        const score = this.score * -1;
+
+        try {
+            const res = await fetch(`${config.apiBaseUrl}/game/save`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({score})
+            });
+
+            if (res.status === 401) {
+                this.handleUnauthorized(score);
+                return;
+            }
+
+            if (!res.ok) {
+                throw new Error("Upload failed");
+            }
+
+            console.log("Score uploaded");
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    handleUnauthorized(score) {
+        localStorage.setItem("pendingScore", JSON.stringify({
+            score: score,
+            timestamp: Date.now()
+        }));
+
+        console.log("Score saved, redirecting to login");
+
+        window.location.href = "/login";
     }
 
     handlePairFound = () => {

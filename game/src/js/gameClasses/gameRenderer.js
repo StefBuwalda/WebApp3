@@ -1,3 +1,5 @@
+import {config} from "/js/config.js.php";
+
 export class GameRenderer {
     constructor(game) {
         this.game = game;
@@ -63,19 +65,45 @@ export class GameRenderer {
         return [...uniqueCats];
     }
 
-    showGameOver(score, topPlayers = []) {
+    async showGameOver(score) {
         document.getElementById("finalScore").textContent = score;
 
+        // show immediately
+        document.getElementById("gameOverScreen").classList.remove("hidden");
+
+        // show placeholder while loading
+        const list = document.getElementById("topPlayersList");
+        list.innerHTML = "<li>Loading...</li>";
+
+        // fetch in background
+        this.fetchTopPlayers()
+            .then(topPlayers => {
+                this.renderTopPlayers(topPlayers);
+            })
+            .catch(() => {
+                list.innerHTML = "<li>Failed to load leaderboard</li>";
+            });
+    }
+
+    async fetchTopPlayers() {
+        const res = await fetch(`${config.apiBaseUrl}/memory/top-scores`);
+
+        if (!res.ok) {
+            throw new Error("Failed to fetch top players");
+        }
+
+        return await res.json();
+    }
+
+    renderTopPlayers(topPlayers) {
         const list = document.getElementById("topPlayersList");
         list.innerHTML = "";
 
         topPlayers.slice(0, 5).forEach(p => {
             const li = document.createElement("li");
-            li.textContent = `${p.name} - ${p.score}`;
+            li.textContent = `${p.username} - ${-1 * p.score}`;
             list.appendChild(li);
         });
-
-        document.getElementById("gameOverScreen").classList.remove("hidden");
     }
 
     createCard(catId) {
