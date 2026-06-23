@@ -120,6 +120,8 @@ input:-webkit-autofill:focus {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    box-sizing: content-box;
+    width: calc(15rem);
 }
 
 .open-btn {

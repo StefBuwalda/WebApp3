@@ -40,12 +40,14 @@ include __DIR__ . '/../partials/header.php';
                         <input type="password" id="psw" placeholder="Enter Password" name="psw" required>
                     </div>
 
+                    <div id="login-error" class="form-error"></div>
+
                     <button type="submit" id="login-btn" class="button button-submit">Log in</button>
                     </form>
                 </div>
             </div>
         </div>
-        
+
         <img src="cats.png" id="loginCats" alt="kitties in a row">
     </div>
 

@@ -10,3 +10,13 @@
     justify-content: center;
     align-items: center;
 }
+
+.form-error {
+    display: none;
+    color: red;
+    white-space: normal;
+}
+
+.form-error.visible {
+    display: block;
+}
