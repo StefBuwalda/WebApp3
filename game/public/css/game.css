@@ -101,3 +101,18 @@
     gap: 1rem;
     justify-content: center;
 }
+
+/* START BUTTON */
+#startScreen {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+}
+
+#startScreen.hidden {
+    display: none;
+}

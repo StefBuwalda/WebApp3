@@ -16,6 +16,10 @@ include __DIR__ . '/../partials/header.php';
                 <div id="healthBar"></div>
             </div>
 
+            <div id="startScreen">
+                <button id="startGameBtn">Start Game</button>
+            </div>
+
             <div id="gameBoard" class="page_tile"></div>
         </div>
     </div>
@@ -47,8 +51,14 @@ include __DIR__ . '/../partials/card.html'; ?>
         import {EndlessController} from '/js/gameControllers/EndlessController.js';
 
         window.controller = new EndlessController();
-        window.controller.setup();
-        window.controller.start();
+        await window.controller.setup();
+
+        document.getElementById("startGameBtn").addEventListener("click", async () => {
+            document.getElementById("startScreen").classList.add("hidden");
+            
+            window.controller.start();
+        });
+
     </script>
 
 <?php
