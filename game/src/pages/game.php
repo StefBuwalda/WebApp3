@@ -2,6 +2,7 @@
 
 $title = 'Game';
 $extraCss = ['/css/game.css', '/css/base.css'];
+$extraCss = ['/css/game.css', '/css/gameover.css'];
 
 include __DIR__ . '/../partials/header.php';
 ?>
