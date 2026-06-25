@@ -10,7 +10,7 @@ include __DIR__ . '/../partials/header.php';
     <div class="content">
         <h1 class="welcome-subtitle">Register</h1>
 
-        <form class="register-content" onsubmit="event.preventDefault(); registerAccount();">
+        <form class="page_tile" id="register-content" onsubmit="event.preventDefault(); registerAccount();">
             <div class="form-group">
                 <label for="uname"><b>Username</b></label>
                 <input type="text" id="uname" placeholder="Enter Username" name="uname" required>

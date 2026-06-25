@@ -1,5 +1,6 @@
 /* Reset CSS */
 * {
+    font-family: "Bradley Hand ITC", cursive;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -18,7 +19,6 @@
 }
 
 body {
-    font-family: "Bradley Hand ITC", cursive;
     color: white;
     letter-spacing: 3px;
     font-size: 20px;
@@ -28,7 +28,6 @@ body {
     background-color: #87CFCC;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
 }
 
 .content {
@@ -42,13 +41,20 @@ body {
     font-size: 40px;
 }
 
+/* GENERAL PAGE TILE */
+.page_tile {
+    border-radius: 1rem;
+    box-shadow: rgba(51, 51, 51, 0.9) 0 4px 8px;
+    font-size: 12px;
+}
+
 /* GENERAL BUTTON */
 .button {
     background-color: #E2A3C7;
     font-family: "Bradley Hand ITC", cursive;
     color:white;
     padding: 1rem;
-    margin: 0.5rem;
+    /*margin: 0.5rem;*/
     border: none;
     border-radius: 30px;
     box-shadow: #9f738d 2px 2px;
@@ -99,6 +105,10 @@ img {
 
 @media (min-width: 768px) {
     * {
-        font-size: 25px
+        font-size: 20px
+    }
+
+    button{
+        font-size:25px
     }
 }

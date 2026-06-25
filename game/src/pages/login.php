@@ -15,7 +15,7 @@ include __DIR__ . '/../partials/header.php';
             <h1>Hello and Welcome</h1>
             <p class="welcome-subtitle">Had a rough day? Come play your favorite memory!</p>
 
-            <div>
+            <div id="choiceGroup">
                 <a href="/register" class="button">Register</a>
 
                 <input type="checkbox" id="modal-toggle" class="modal-checkbox">

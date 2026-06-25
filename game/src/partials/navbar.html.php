@@ -1,15 +1,15 @@
 <nav id="navbar">
     <div class="nav-left">
-        <a href="/">Home</a>
-        <a href="#">About</a>
+        <a href="/login">Home</a>
+        <a href="/">Game</a>
     </div>
     <div class="nav-center">
         <img src="logo.png" alt="logo" id="logo">
     </div>
     <div class="nav-right">
-        <a href="#">Contact</a>
-        <a href="/login" data-guest>login</a>
-        <a href="#" id="logout" data-auth>logout</a>
+        <a href="settings" data-auth>Settings</a>
+        <a href="/login" data-guest>Login</a>
+        <a href="#" id="logout" data-auth>Logout</a>
     </div>
 </nav>
 

@@ -63,6 +63,7 @@
 
 #gameBoard {
     /* grid-area: row-start / column-start / row-end / column-end */
+    background-color: #60435f;
     grid-area: 3 / 2 / 3 / 3;
     width: 100%;
     height: 100%;
