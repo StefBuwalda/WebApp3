@@ -1,8 +1,7 @@
 <?php
 
 $title = 'Game';
-$extraCss = ['/css/game.css', '/css/base.css'];
-$extraCss = ['/css/game.css', '/css/gameover.css'];
+$extraCss = ['/css/game.css', '/css/healthbar.css','/css/card.css','/css/gameover.css'];
 
 include __DIR__ . '/../partials/header.php';
 ?>
@@ -18,7 +17,7 @@ include __DIR__ . '/../partials/header.php';
             </div>
 
             <div id="startScreen">
-                <button id="startGameBtn">Start Game</button>
+                <button class="button" id="startGameBtn">Start Game</button>
             </div>
 
             <div id="gameBoard" class="page_tile"></div>
@@ -39,8 +38,8 @@ include __DIR__ . '/../partials/header.php';
             </ol>
 
             <div class="gameOverButtons">
-                <button id="uploadScoreBtn">Upload score</button>
-                <button id="playAgainBtn">Play again</button>
+                <button class="button" id="uploadScoreBtn">Upload score</button>
+                <button class="button" id="playAgainBtn">Play again</button>
             </div>
         </div>
     </div>

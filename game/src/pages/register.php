@@ -1,13 +1,13 @@
 <?php
 
 $title = 'Register';
-$extraCss = [];
+$extraCss = ['/css/register.css'];
 
 include __DIR__ . '/../partials/header.php';
 ?>
 
 <main class="background">
-    <div class="welcome_content">
+    <div class="content">
         <h1 class="welcome-subtitle">Register</h1>
 
         <form class="register-content" onsubmit="event.preventDefault(); registerAccount();">

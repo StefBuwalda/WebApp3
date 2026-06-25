@@ -10,12 +10,12 @@ include __DIR__ . '/../partials/header.php';
         if (localStorage.getItem('jwt')) window.location.href = '/';
     </script>
 
-    <div class="welcome_content">
+    <div class="content">
         <div id="loginGroup">
             <h1>Hello and Welcome</h1>
             <p class="welcome-subtitle">Had a rough day? Come play your favorite memory!</p>
 
-            <div class="choice-area">
+            <div>
                 <a href="/register" class="button">Register</a>
 
                 <input type="checkbox" id="modal-toggle" class="modal-checkbox">

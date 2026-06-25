@@ -106,6 +106,7 @@ export class EndlessController {
             localStorage.removeItem("pendingScore");
 
             console.log("Score uploaded");
+            this.gameOver();
         } catch (err) {
             console.error(err);
         }

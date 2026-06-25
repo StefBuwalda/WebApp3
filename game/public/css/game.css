@@ -3,6 +3,7 @@
     container-type: size;
 }
 
+
 #page_grid {
     --gap: 1rem;
     --barSize: 2rem;
@@ -102,25 +103,6 @@
     justify-content: center;
 }
 
-#uploadScoreBtn, #startGameBtn{
-    padding:1rem;
-    color: white;
-    font-family: "Bradley Hand ITC", cursive;
-    background-color: #60435f;
-    border-radius: 20px;
-    border:none;
-    box-shadow: rgba(50, 36, 49, 0.5) 2px 2px;
-}
-
-#playAgainBtn{
-    background-color: rgba(96, 67, 95, 0.0);
-    padding:1rem;
-    color: white;
-    font-family: "Bradley Hand ITC", cursive;
-    border: 4px solid #60435f;
-    border-radius: 20px;
-    box-shadow: rgba(50, 36, 49, 0.5) 2px 2px;
-}
 
 /* START BUTTON */
 #startScreen {
