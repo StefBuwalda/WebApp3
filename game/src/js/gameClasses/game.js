@@ -70,6 +70,7 @@ export class Game {
     reset() {
         this.locked = true;
         this.pairs = 0;
+        this.flippedCards = [];
         for (const card of this.cards) {
             if (card.flipped) {
                 card.flip();

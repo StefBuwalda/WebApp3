@@ -21,6 +21,7 @@ export class EndlessController {
     }
 
     async setup() {
+        this.game.cards = [];
         this.game.generateCards(16);
         this.game.setOnAllPairsFound(() => this.handleLevelCompleted())
         this.game.setOnPairFound(() => this.handlePairFound());
@@ -54,7 +55,7 @@ export class EndlessController {
         // reset game state
         this.resetState();
 
-        this.game.cards = [];
+        this.game.reset();
 
         // rebuild game
         this.setup().then(
