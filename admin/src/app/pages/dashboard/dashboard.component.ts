@@ -1,7 +1,7 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { HighchartsChartDirective } from 'highcharts-angular';
-import { ApiService } from '../../api.service';
+import { ApiService } from '../../api/api.service';
 
 interface AggregateResponse {
   aantal_spellen: number;

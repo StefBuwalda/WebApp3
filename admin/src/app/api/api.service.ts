@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
-import { ConfigService } from './config/config.service';
-import { AuthService } from './auth/auth.service';
-import {JwtUser} from './auth/jwt-user.model';
+import { ConfigService } from '../config/config.service';
+import { AuthService } from '../auth/auth.service';
+import {JwtUser} from '../auth/jwt-user.model';
 
 @Injectable({
   providedIn: 'root',
