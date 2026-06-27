@@ -1,7 +1,6 @@
 <nav id="navbar">
     <div class="nav-left">
-        <a href="/login">Home</a>
-        <a href="/">Game</a>
+        <a href="/">Home</a>
     </div>
     <div class="nav-center">
         <img src="logo.png" alt="logo" id="logo">

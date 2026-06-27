@@ -1,0 +1,25 @@
+<div class="field">
+  <label [for]="label">{{ label }}</label>
+  <div class="input-wrap">
+    <input
+      [id]="label"
+      [type]="resolvedType"
+      [autocomplete]="autocomplete"
+      [value]="value()"
+      [disabled]="disabled()"
+      [class.invalid]="invalid"
+      (input)="handleInput($event)"
+      (blur)="handleBlur()"
+    />
+    @if (type === 'password') {
+      <button
+        type="button"
+        class="toggle-visibility"
+        (click)="showPassword.set(!showPassword())"
+        [attr.aria-label]="showPassword() ? 'Hide password' : 'Show password'"
+      >
+        {{ showPassword() ? 'Hide' : 'Show' }}
+      </button>
+    }
+  </div>
+</div>

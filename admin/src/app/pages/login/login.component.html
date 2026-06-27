@@ -1,0 +1,35 @@
+<div class="login-screen">
+  <div class="login-card">
+    <h1 class="title">Welcome back</h1>
+    <p class="subtitle">Sign in to continue to your dashboard.</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+      <app-form-field
+        label="Username"
+        type="text"
+        autocomplete="username"
+        formControlName="username"
+        [invalid]="loginForm.controls.username.invalid && loginForm.controls.username.touched"
+      />
+
+      <app-form-field
+        label="Password"
+        type="password"
+        autocomplete="current-password"
+        formControlName="password"
+        [invalid]="loginForm.controls.password.invalid && loginForm.controls.password.touched"
+      />
+
+      @if (errorMessage()) {
+        <p class="error" role="alert">{{ errorMessage() }}</p>
+      }
+
+      <button type="submit" class="submit" [disabled]="!loginForm.valid || isLoading()">
+        @if (isLoading()) {
+          <span class="spinner" aria-hidden="true"></span>
+        }
+        {{ isLoading() ? 'Logging in…' : 'Login' }}
+      </button>
+    </form>
+  </div>
+</div>

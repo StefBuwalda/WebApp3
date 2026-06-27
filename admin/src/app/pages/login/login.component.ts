@@ -2,24 +2,13 @@ import { Component, inject, signal } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
+import { FormFieldComponent} from '../../preset/form-field/form-field.component';
 
 @Component({
   selector: 'app-login',
-  template: `
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <label>Username</label>
-      <input type="text" formControlName="username" />
-      <label>Password</label>
-      <input type="password" formControlName="password" />
-      @if (errorMessage()) {
-        <p>{{ errorMessage() }}</p>
-      }
-      <button type="submit" [disabled]="!loginForm.valid || isLoading()">
-        {{ isLoading() ? 'Logging in...' : 'Login' }}
-      </button>
-    </form>
-  `,
-  imports: [ReactiveFormsModule],
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css',
+  imports: [ReactiveFormsModule, FormFieldComponent],
 })
 export class LoginComponent {
   private auth = inject(AuthService);
