@@ -3,4 +3,5 @@ export type JwtUser = {
   username: string;
   roles: string[];
   exp: number;
+  token: string;
 };

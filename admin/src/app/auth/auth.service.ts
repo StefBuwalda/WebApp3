@@ -3,15 +3,18 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {JwtUser} from './jwt-user.model';
 import {jwtDecode} from 'jwt-decode';
+import {ConfigService} from '../config/config.service';
+import {Router} from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private http = inject(HttpClient);
-  private apiUrl = 'http://127.0.0.1:8000';
-  private tokenKey = 'auth_token';
+  private http: HttpClient = inject(HttpClient);
+  private config: ConfigService = inject(ConfigService);
+  private router: Router = inject(Router)
+  private tokenKey: string = 'auth_token';
 
   public login(username: string, password: string): Observable<void> {
-    const url = `${this.apiUrl}/memory/login`;
+    const url = `${this.config.apiUrl}/memory/login`;
     const body = { username, password };
 
     return this.http.post<{ token: string }>(url, body).pipe(
@@ -30,6 +33,7 @@ export class AuthService {
 
   public logout(): void {
     this.clearToken();
+    this.navigateToLogin();
   }
 
   public isAuthenticated(): boolean {
@@ -51,6 +55,10 @@ export class AuthService {
     if (decoded.exp <= now) return null;
 
     return decoded;
+  }
+
+  private navigateToLogin(){
+    this.router.navigate(['/login']);
   }
 
   private saveToken(token: string): void {
@@ -77,6 +85,8 @@ export class AuthService {
       {
         return null;
       }
+
+      decoded.token = token;
 
       return decoded;
     } catch {
