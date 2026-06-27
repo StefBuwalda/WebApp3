@@ -1,0 +1,62 @@
+
+#preferences{
+    background-color: #775475;
+    margin: 1rem;
+}
+
+
+@media (min-width: 768px){
+    #color_content{
+        display:flex;
+        white-space: nowrap;
+    }
+
+    .button {
+        width: auto;
+        display: inline-block;
+    }
+
+}
+
+.preferences_content{
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 0 0.2rem 0 0.2rem;
+    margin: 1rem;
+}
+
+.preferences_content h1{
+    text-align: center;
+}
+
+.color_picker{
+    display: flex;
+    align-items: center;
+}
+
+input[type="color"] {
+    -webkit-appearance: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: none;
+}
+input[type="color"]::-webkit-color-swatch {
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+}
+
+#btn-save-prefs, #btn-save-email{
+    border-radius: 10px;
+}
+
+#btn-save-prefs:hover, #btn-save-email:hover{
+    background-color: white;
+    color:#60435f;
+}
+
+.page_tile > * {
+}

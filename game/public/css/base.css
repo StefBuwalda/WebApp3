@@ -1,0 +1,114 @@
+/* Reset CSS */
+* {
+    font-family: "Bradley Hand ITC", cursive;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.no-drag {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.no-drag img {
+    -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+body {
+    color: white;
+    letter-spacing: 3px;
+    font-size: 20px;
+    margin: 0;
+    height: 100vh;
+    max-height: 100vh;
+    background-color: #87CFCC;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.content h1 {
+    font-size: 40px;
+}
+
+/* GENERAL PAGE TILE */
+.page_tile {
+    border-radius: 1rem;
+    box-shadow: rgba(51, 51, 51, 0.9) 0 4px 8px;
+    font-size: 12px;
+}
+
+/* GENERAL BUTTON */
+.button {
+    background-color: #E2A3C7;
+    font-family: "Bradley Hand ITC", cursive;
+    color:white;
+    padding: 1rem;
+    /*margin: 0.5rem;*/
+    border: none;
+    border-radius: 30px;
+    box-shadow: #9f738d 2px 2px;
+}
+.button:hover {
+    background-color: #60435F;
+
+}
+.button-wrapper {
+    display: inline-flex;
+    cursor: pointer;
+}
+
+/* INVUL VELD SPUL */
+input[type="password"],
+input[type="text"],
+input[type="email"] {
+    font-family: "garamond", "serif";
+    color: black;
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #878787;
+    border-radius: 10px;
+    padding: 10px 14px;
+    box-sizing: border-box;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: black;
+    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.form-group {
+    width: 15rem;
+
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/*RESPONSIVE SPUL*/
+
+@media (min-width: 768px) {
+    * {
+        font-size: 20px
+    }
+
+    button{
+        font-size:25px
+    }
+}

@@ -1,43 +1,64 @@
-<div class="background">
-    <div class="welcome_content">
-        <h1>Hello and Welcome</h1>
-        <h2> Had a rough day? Come play your favorite memory! </h2>
-        <div class="choice-area">
+<?php
 
-            <a href="" class="button" > Register </a>
-            <button class="button" onclick="login()" > Log in </button>
-            <br>
-            <img src="cats.png" alt="kitties in a row">
+$title = 'Login';
+$extraCss = ['/css/login.css'];
 
+include __DIR__ . '/../partials/header.php';
+?>
 
+    <script>
+        if (localStorage.getItem('jwt')) window.location.href = '/';
+    </script>
+
+    <div class="content">
+        <div id="loginGroup">
+            <h1>Hello and Welcome</h1>
+            <p class="welcome-subtitle">Had a rough day? Come play your favorite memory!</p>
+
+            <div id="choiceGroup">
+                <a href="/register" class="button">Register</a>
+
+                <input type="checkbox" id="modal-toggle" class="modal-checkbox">
+                <label for="modal-toggle" class="button-wrapper">
+                    <span class="button">Login</span>
+                </label>
+
+                <div class="modal-overlay" id="myModal">
+                    <label for="modal-toggle" class="outside-close-area"></label>
+
+                    <form class="modal-content" id="login-form"
+                    ">
+                    <label for="modal-toggle" class="close-btn">&times;</label>
+
+                    <div class="form-group">
+                        <label for="uname"><b>Username</b></label>
+                        <input type="text" id="uname" placeholder="Enter Username" name="uname" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="psw"><b>Password</b></label>
+                        <input type="password" id="psw" placeholder="Enter Password" name="psw" required>
+                    </div>
+
+                    <div id="login-error" class="form-error"></div>
+
+                    <button type="submit" id="login-btn" class="button button-submit">Log in</button>
+
+                    <button type="button" id="github-btn" class="button button-github">
+                        <img alt="ghimg" src="/github-icon.svg">
+                        Login with GitHub
+                    </button>
+
+                    </form>
+                </div>
+            </div>
         </div>
-        <!-- <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-  -->
+        <img src="cats.png" id="loginCats" alt="kitties in a row">
     </div>
 
-</div>
+    <script type="module" src="/js/login.js.php"></script>
+    <script type="module" src="/js/github.js.php"></script>
 
-<script>
-    const API_BASE = <?= json_encode($_ENV['API_BASE_URL']) ?>;
-
-    async function login() {
-        const response = await fetch(`${API_BASE}/memory/login`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username: 'Chantal', password: 'chantal' })
-        });
-
-        const data = await response.json();
-
-        if (data.token) {
-            localStorage.setItem('jwt', data.token);
-            alert('Login successful!\n\n' + JSON.stringify(data, null, 2));
-        } else {
-            alert('Login failed:\n\n' + JSON.stringify(data, null, 2));
-        }
-    }
-</script>
+<?php
+include __DIR__ . '/../partials/footer.php'; ?>

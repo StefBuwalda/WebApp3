@@ -1,0 +1,14 @@
+#register-content {
+    background-color: rgba(255, 255, 255, 0.33);
+    padding: 2rem;
+    margin: 2rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+
+
+

@@ -1,40 +1,41 @@
 <?php
-$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-$pages = [
-        '/'        => __DIR__ . '/../src/pages/game.php',
-        '/login'   => __DIR__ . '/../src/pages/login.php',
+require_once __DIR__ . '/../src/Router.php';
+
+// 1. Define defaults
+$defaults = [
+    'API_BASE_URL' => 'http://127.0.0.1:8000',
 ];
 
-$page = $pages[$path] ?? __DIR__ . '/../src/pages/game.php';
-?>
+$config = $defaults;
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Example page</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/navbar.css">
-    <link rel="stylesheet" href="/css/card.css">
-    <link rel="stylesheet" href="/css/healthbar.css">
-    <link rel="stylesheet" href="/css/home.css"
-</head>
+// 2. Load .env
+try{
+    $env = parse_ini_file(__DIR__ . '/../.env');
 
-<?php
-foreach (file(__DIR__ . '/../.env') as $line) {
-    $line = trim($line);
-    if ($line && !str_starts_with($line, '#')) {
-        [$key, $value] = explode('=', $line, 2);
-        $_ENV[trim($key)] = trim($value);
+// 3. Merge: env overrides defaults
+    if ($env !== false) {
+        $config = array_merge($config, $env);
     }
 }
-?>
+catch (\Throwable $e) {
+    error_log($e->getMessage());
+}
 
-<body>
-<?php
-include $page;
+// 4. Apply to environment (only if not already set)
+foreach ($config as $key => $value) {
+    putenv("$key=$value");
+}
+
+$router = new Router();
+
+$router->add('/github-callback.html', __DIR__ . '/../src/pages/githubCallback.php');
+$router->add('/', __DIR__ . '/../src/pages/game.php');
+$router->add('/login', __DIR__ . '/../src/pages/login.php');
+$router->add('/register', __DIR__ . '/../src/pages/register.php');
+$router->add('/settings', __DIR__ . '/../src/pages/preferences.php');
+
+$router->serveDir('/js', __DIR__ . '/../src/js', 'application/javascript');
+
+$router->dispatch(__DIR__ . '/../src/pages/404.php');
 ?>
-</body>
-</html>

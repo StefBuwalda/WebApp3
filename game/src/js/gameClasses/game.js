@@ -1,28 +1,25 @@
-import { Card } from "/js/gameClasses/card.js";
+import {Card} from "/js/gameClasses/card.js";
+
 export class Game {
     constructor(columns, cards = []) {
         this.cols = columns;
         this.cards = cards;
         this.flippedCards = [];
         this.locked = true;
-        this.health = 100;
         this.pairs = 0;
     }
 
-    setOnPairFound(callable){
+    setOnPairFound(callable) {
         this.onPairFound = callable;
     }
-    setOnAllPairsFound(callable){
+
+    setOnAllPairsFound(callable) {
         this.onAllPairsFound = callable;
     }
 
-    setOnDeath(callable){
-        this.onDeath = callable;
-    }
-
-    flipCard(card){
+    flipCard(card) {
         // Check if locked or already flipped
-        if (this.locked || card.flipped){
+        if (this.locked || card.flipped) {
             return;
         }
 
@@ -55,14 +52,14 @@ export class Game {
         }
     }
 
-    checkForEnd(){
+    checkForEnd() {
         console.log("Checking for full board");
-        if (this.cards.length >> 1 === this.pairs){
+        if (this.cards.length >> 1 === this.pairs) {
             this.onAllPairsFound();
         }
     }
 
-    generateCards(amount){
+    generateCards(amount) {
         let start = this.cards.length;
 
         for (let i = 0; i < amount; i++) {
@@ -70,16 +67,16 @@ export class Game {
         }
     }
 
-    reset(){
+    reset() {
         this.locked = true;
-        this.health = 100;
         this.pairs = 0;
+        this.flippedCards = [];
         for (const card of this.cards) {
-            if (card.flipped){
+            if (card.flipped) {
                 card.flip();
             }
         }
-        setTimeout(()=> {
+        setTimeout(() => {
             this.locked = false;
         }, 1000);
     }

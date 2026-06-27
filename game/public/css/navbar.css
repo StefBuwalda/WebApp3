@@ -1,22 +1,46 @@
 #navbar {
     display: flex;
     font-family: "Bradley Hand ITC", cursive;
+    background-color: #87CFCC;
     padding: 10px 20px;
     height: calc(2rem + 20px);
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    overflow:hidden;
 }
 
-.nav-links{
-    justify-content: space-between;
+.nav-left,
+.nav-center,
+.nav-right {
+    flex: 1;
+    display: flex;
     align-items: center;
 }
 
-#navbar a {
+.nav-left {
+    justify-content: flex-start;
+}
+
+.nav-right {
+    justify-content: flex-end;
+}
+
+.nav-center {
+    justify-content: center;
+}
+
+
+#navbar a, #navbar button {
     color: white;
     text-decoration: none;
     margin: 0 10px;
     font-size: 16px;
+    white-space: nowrap;
 }
 
-#logo{
+#logo {
     height: calc(2rem + 20px);
+    display: block;
+    object-fit: contain;
 }
