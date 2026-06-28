@@ -17,7 +17,7 @@ export class EndlessController {
         this.score = 0;
         this.health = 100;
         this.scalingDifficulty = 1;
-        this.globalDifficulty = 50;
+        this.globalDifficulty = 5;
     }
 
     async setup() {
