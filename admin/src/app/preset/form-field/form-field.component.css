@@ -21,10 +21,10 @@ input {
   box-sizing: border-box;
   padding: 10px 12px;
   font-size: 14px;
-  border: 1px solid var(--line, #e4e3df);
+  border: 1px solid var(--line);
   border-radius: 8px;
-  background: var(--paper, #f7f7f5);
-  color: var(--ink, #1b1b1f);
+  background: var(--paper);
+  color: var(--card, #1b1b1f);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
