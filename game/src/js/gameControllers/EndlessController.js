@@ -44,7 +44,7 @@ export class EndlessController {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({score: data.score})
+            body: JSON.stringify({score: data.score, api: data.api})
         }).catch((err) => (console.log(err)));
     }
 
@@ -73,16 +73,18 @@ export class EndlessController {
         };
 
         document.getElementById("uploadScoreBtn").onclick = () => {
-            this.uploadScore();
+            const api = this.renderer.preferences?.preferred_api ?? 'cataas';
+            this.uploadScore(api);
         };
     }
 
-    async uploadScore() {
+    async uploadScore(api) {
         const score = this.score * -1;
 
         try {
             localStorage.setItem("pendingScore", JSON.stringify({
                 score: score,
+                api: api,
                 timestamp: Date.now()
             }));
 
@@ -91,7 +93,7 @@ export class EndlessController {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({score})
+                body: JSON.stringify({score, api})
             });
 
             if (res.status === 401) {
