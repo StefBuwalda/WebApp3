@@ -34,7 +34,7 @@ export interface AggregateResponse {
     </div>
     <div class="dashboard">
       <div class="kpi-row">
-        <app-kpi-card label="Games played" [value]="aggregate()?.aantal_spellen ?? '—'" />
+        <app-kpi-card label="Games uploaded" [value]="aggregate()?.aantal_spellen ?? '—'" />
         <app-kpi-card label="Players" [value]="aggregate()?.aantal_spelers ?? '—'" />
         <app-kpi-card label="Active days" [value]="activeDays()" />
       </div>
