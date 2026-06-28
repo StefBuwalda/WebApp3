@@ -10,20 +10,20 @@ import { Component, Input } from '@angular/core';
   `,
   styles: [`
     .kpi {
-      background: #000000;
+      background: var(--card);
       border-radius: 0.5rem;
       padding: 1rem;
     }
 
     .kpi-label {
-      font-size: 13px;
-      color: #ffffff;
+      font-size: 1rem;
+      color: var(--ink);
       margin: 0 0 4px;
     }
 
     .kpi-value {
-      font-size: 28px;
-      color: #ffffff;
+      font-size: 2rem;
+      color: var(--ink);
       font-weight: 500;
       margin: 0;
     }

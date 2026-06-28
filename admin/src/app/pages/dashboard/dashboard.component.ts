@@ -8,6 +8,7 @@ import { PlayersTableComponent } from '../../preset/kpi-tile/players-table.compo
 import { GamesTableComponent } from '../../preset/kpi-tile/games-table.component';
 import { Player } from '../../models/players.model';
 import { Game } from '../../models/game.model';
+import { DonutChart } from '../../preset/donut-chart/donut-chart';
 
 export interface AggregateResponse {
   aantal_spellen: number;
@@ -24,12 +25,12 @@ export interface AggregateResponse {
     SectionCardComponent,
     PlayersTableComponent,
     GamesTableComponent,
+    DonutChart
   ],
   template: `
-    <div>
       <div class="dashboard-header">
-        <button class="logout-btn" (click)="onLogout()">Log out</button>
-      </div>
+        <h1> Welcome to the Memory Dashboard</h1>
+      <button class="logout-btn" (click)="onLogout()">Log out</button>
     </div>
     <div class="dashboard">
       <div class="kpi-row">
@@ -37,18 +38,23 @@ export interface AggregateResponse {
         <app-kpi-card label="Players" [value]="aggregate()?.aantal_spelers ?? '—'" />
         <app-kpi-card label="Active days" [value]="activeDays()" />
       </div>
-
+<div class="charts-header">
       <app-section-card title="Games per day">
         @if (chartOptions()) {
           <div
             highchartsChart
             [options]="chartOptions()!"
-            style="width: 100%; height: 220px; display: block;"
+            style="width: 100%; display: block;"
           ></div>
         } @else {
           <div class="placeholder">Loading...</div>
         }
       </app-section-card>
+
+      <app-section-card title="Api distribution">
+        <app-donut-chart [games]="games()" />
+      </app-section-card>
+</div>
 
       <div class="tables-row">
         <app-section-card title="Players">
@@ -62,30 +68,7 @@ export interface AggregateResponse {
 
     </div>
   `,
-  styles: [`
-    .dashboard { padding: 1.5rem 0; }
-
-    .kpi-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
-      margin-bottom: 1.5rem;
-    }
-
-    .tables-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .placeholder {
-      height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #888;
-    }
-  `],
+  styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent implements OnInit {
   private readonly api = inject(ApiService);
@@ -121,6 +104,7 @@ export class DashboardComponent implements OnInit {
     });
 
     this.dates = dates;
+    console.log('dates from API:', dates);
     this.players.set(players);
     this.games.set(games);
     this.chartOptions.set(this.buildChart(dates));

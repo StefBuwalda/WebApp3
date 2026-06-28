@@ -14,16 +14,16 @@ import { Component, Input } from '@angular/core';
   styles: [`
     .section { margin-bottom: 1.5rem; }
     .section-title {
-      font-size: 12px;
+      font-size: 1rem;
       font-weight: 500;
-      color: #888;
+      color: var(--ink-muted);
       text-transform: uppercase;
       letter-spacing: 0.04em;
       margin: 0 0 10px;
     }
     .card {
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
+      border: 1px solid var(--ink-muted);
+      border-radius: 1rem;
       padding: 1rem 1.25rem;
     }
   `],
