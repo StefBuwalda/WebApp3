@@ -1,6 +1,7 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { HighchartsChartDirective } from 'highcharts-angular';
 import { ApiService } from '../../api/api.service';
+import { AuthService } from '../../auth/auth.service';
 import { KpiCardComponent } from '../../preset/kpi-tile/kpi-card.component';
 import { SectionCardComponent } from '../../preset/kpi-tile/section-card.component';
 import { PlayersTableComponent } from '../../preset/kpi-tile/players-table.component';
@@ -25,8 +26,12 @@ export interface AggregateResponse {
     GamesTableComponent,
   ],
   template: `
+    <div>
+      <div class="dashboard-header">
+        <button class="logout-btn" (click)="onLogout()">Log out</button>
+      </div>
+    </div>
     <div class="dashboard">
-
       <div class="kpi-row">
         <app-kpi-card label="Games played" [value]="aggregate()?.aantal_spellen ?? '—'" />
         <app-kpi-card label="Players" [value]="aggregate()?.aantal_spelers ?? '—'" />
@@ -84,6 +89,11 @@ export interface AggregateResponse {
 })
 export class DashboardComponent implements OnInit {
   private readonly api = inject(ApiService);
+  private readonly auth = inject(AuthService);
+
+  protected onLogout(): void {
+    this.auth.logout();
+  }
 
   protected readonly aggregate = signal<AggregateResponse | null>(null);
   protected readonly players = signal<Player[]>([]);
